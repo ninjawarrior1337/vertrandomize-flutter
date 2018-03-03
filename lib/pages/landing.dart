@@ -26,7 +26,7 @@ class _landingPage extends State<landingPage>
 
   int getRand()
   {
-    return new Random().nextInt(getNextInt());
+    return new Random.secure().nextInt(getNextInt());
   }
 
   void _pressCode(){
