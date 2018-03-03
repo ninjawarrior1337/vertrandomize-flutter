@@ -14,9 +14,19 @@ class _landingPage extends State<landingPage>
   String finalVal = "Press Button Below";
   Color cbc = Colors.blue;
 
+  bool tylerSwitch = false;
+
+  int getNextInt()
+  {
+    if (tylerSwitch)
+      return 10;
+    else
+      return 9;
+  }
+
   int getRand()
   {
-    return new Random().nextInt(people.length);
+    return new Random().nextInt(getNextInt());
   }
 
   void _pressCode(){
@@ -24,12 +34,12 @@ class _landingPage extends State<landingPage>
     people[1] = ("Jenna");
     people[2] = ("Bryan");
     people[3] = ("Jaxon");
-    people[4] = ("Tyler");
+    people[4] = ("Brandon");
     people[5] = ("Jesus");
     people[6] = ("Johnny");
     people[7] = ("Robert");
     people[8] = ("Shiraz");
-    people[9] = ("Brandon");
+    people[9] = ("Tyler");
 
     setState((){
       finalVal = '${people[getRand()]}, ${people[getRand()]}';
@@ -56,6 +66,19 @@ class _landingPage extends State<landingPage>
         body: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            new Center(
+              child: new SwitchListTile(
+                  value: tylerSwitch,
+                  onChanged: (bool value) {
+                    setState(() {
+                      tylerSwitch = value;
+                    }
+                    );
+                    },
+                  title: new Text("Tyler Mode"),
+              ),
+
+            ),
             new Center(
               child: new Text(
                   finalVal,
