@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:async';
+import 'package:flutter/services.dart';
 
 class landingPage extends StatefulWidget {
   const landingPage({ Key key }) : super(key: key);
@@ -19,9 +21,9 @@ class _landingPage extends State<landingPage>
   int getNextInt()
   {
     if (tylerSwitch)
-      return 10;
+      return 11;
     else
-      return 9;
+      return 10;
   }
 
   int getRand()
@@ -39,7 +41,8 @@ class _landingPage extends State<landingPage>
     people[6] = ("Johnny");
     people[7] = ("Robert");
     people[8] = ("Shiraz");
-    people[9] = ("Tyler");
+    people[9] = ("Aiden");
+    people[10] = ("Tyler");
 
     setState((){
       finalVal = '${people[getRand()]}, ${people[getRand()]}';
@@ -70,6 +73,7 @@ class _landingPage extends State<landingPage>
               child: new SwitchListTile(
                   value: tylerSwitch,
                   onChanged: (bool value) {
+                    SystemSound.play(SystemSoundType.click);
                     setState(() {
                       tylerSwitch = value;
                     }
@@ -90,7 +94,10 @@ class _landingPage extends State<landingPage>
             ),
             new Center(
               child: new RaisedButton(
-                onPressed: _pressCode,
+                onPressed: (){
+                  _pressCode();
+                  SystemSound.play(SystemSoundType.click);
+                },
                 color: cbc,
                 child: new Text("Generate Pair")
               ),
