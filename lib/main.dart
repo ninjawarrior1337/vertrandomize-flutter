@@ -41,8 +41,8 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
             bottom: new TabBar(
                 controller: controller,
                 tabs: <Tab>[
-                  new Tab(text: "Old Friends",),
                   new Tab(text: "New Friends",),
+                  new Tab(text: "Old Friends",),
                 ]
             )
         ),
