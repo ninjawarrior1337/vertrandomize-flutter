@@ -12,7 +12,7 @@ class landingPage extends StatefulWidget {
 
 class _landingPage extends State<landingPage>
 {
-  List<String> people = new List(10);
+  List<String> people = new List(11);
   String finalVal = "Press Button Below";
   Color cbc = Colors.blue;
 
