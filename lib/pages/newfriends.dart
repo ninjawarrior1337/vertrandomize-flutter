@@ -60,12 +60,8 @@ class _landingPage extends State<landingPage>
   @override
   Widget build(BuildContext context)
   {
-    return new Material(
+    return new Container(
       child: new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Vert Randomize 2"),
-          backgroundColor: Colors.blue,
-        ),
         body: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -84,14 +80,14 @@ class _landingPage extends State<landingPage>
 
             ),
             new Center(
-              child: new Text(
+                child: new Text(
                   finalVal,
-                style: new TextStyle(
-                  fontSize: 40.0,
+                  style: new TextStyle(
+                    fontSize: 40.0,
 
+                  ),
                 ),
               ),
-            ),
             new Center(
               child: new RaisedButton(
                 onPressed: (){
