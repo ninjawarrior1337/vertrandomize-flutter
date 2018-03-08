@@ -8,6 +8,7 @@ addons:
       - ubuntu-toolchain-r-test # if we don't specify this, the libstdc++6 we get is the wrong version
     packages:
       - libstdc++6
+      - lib32stdc++6
       - fonts-droid
       - openjdk-8-jre
       - openjdk-8-jdk
