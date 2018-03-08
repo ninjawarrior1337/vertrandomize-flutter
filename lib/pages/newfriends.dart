@@ -12,7 +12,7 @@ class landingPage extends StatefulWidget {
 
 class _landingPage extends State<landingPage>
 {
-  List<String> people = new List(11);
+  List<String> people = new List();
   String finalVal = "Press Button Below";
   Color cbc = Colors.blue;
 
@@ -21,9 +21,9 @@ class _landingPage extends State<landingPage>
   int getNextInt()
   {
     if (tylerSwitch)
-      return 11;
+      return people.length;
     else
-      return 10;
+      return people.length-1;
   }
 
   int getRand()
@@ -32,17 +32,18 @@ class _landingPage extends State<landingPage>
   }
 
   void _pressCode(){
-    people[0] = ("Darren");
-    people[1] = ("Jenna");
-    people[2] = ("Bryan");
-    people[3] = ("Jaxon");
-    people[4] = ("Brandon");
-    people[5] = ("Jesus");
-    people[6] = ("Johnny");
-    people[7] = ("Robert");
-    people[8] = ("Shiraz");
-    people[9] = ("Aiden");
-    people[10] = ("Tyler");
+    people.add("Darren");
+    people.add("Jenna");
+    people.add("Bryan");
+    people.add("Jaxon");
+    people.add("Brandon");
+    people.add("Jesus");
+    people.add("Johnny");
+    people.add("Robert");
+    people.add("Shiraz");
+    people.add("Aiden");
+    people.add("Allen");
+    people.add("Tyler");
 
     setState((){
       finalVal = '${people[getRand()]}, ${people[getRand()]}';

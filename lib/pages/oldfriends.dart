@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class landingPage extends StatefulWidget {
   const landingPage({ Key key }) : super(key: key);
@@ -12,18 +13,19 @@ class landingPage extends StatefulWidget {
 
 class _landingPage extends State<landingPage>
 {
-  List<String> people = new List(9);
-  String finalVal = "Press Button Below";
+  List<String> people = new List();
   Color cbc = Colors.blue;
+
+  String finalVal = "Press Button Below";
 
   bool tylerSwitch = false;
 
   int getNextInt()
   {
     if (tylerSwitch)
-      return 9;
+      return people.length;
     else
-      return 8;
+      return people.length-1;
   }
 
   int getRand()
@@ -31,19 +33,24 @@ class _landingPage extends State<landingPage>
     return new Random.secure().nextInt(getNextInt());
   }
 
-  void _pressCode(){
-    people[0] = ("Derek");
-    people[1] = ("Jenna");
-    people[2] = ("Antonio");
-    people[3] = ("Steven");
-    people[4] = ("Tia");
-    people[5] = ("Dylan");
-    people[6] = ("Ethan");
-    people[7] = ("Marley");
-    people[8] = ("Tyler In VR");
+  void _pressCode() async {
 
-    setState((){
+
+    people.add("Derek");
+    people.add("Jenna");
+    people.add("Antonio");
+    people.add("Steven");
+    people.add("Tia");
+    people.add("Dylan");
+    people.add("Ethan");
+    people.add("Marley");
+    people.add("Tyler In VR");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+
       finalVal = '${people[getRand()]}, ${people[getRand()]}';
+      prefs.setString("oldfriendsval", finalVal);
       if (cbc == Colors.blue)
       {
         cbc = Colors.greenAccent;
@@ -54,7 +61,6 @@ class _landingPage extends State<landingPage>
       }
     });
   }
-
   @override
   Widget build(BuildContext context)
   {
