@@ -10,6 +10,23 @@ addons:
       - libstdc++6
       - fonts-droid
       - openjdk-8-jre
+      - openjdk-8-jdk
+install:
+  # Download and unzip the Android SDK tools (if not already there thanks to the cache mechanism)
+  # Latest version available here: https://developer.android.com/studio/index.html#downloads
+  - if test ! -e $HOME/android-sdk-dl/sdk-tools.zip ; then curl https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip > $HOME/android-sdk-dl/sdk-tools.zip ; fi
+  - unzip -qq -n $HOME/android-sdk-dl/sdk-tools.zip -d $HOME/android-sdk
+
+  # Install or update Android SDK components (will not do anything if already up to date thanks to the cache mechanism)
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'tools' > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platform-tools' > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'build-tools;26.0.1' > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-26' > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
+
+env:
+  - ANDROID_HOME=$HOME/android-sdk
+
 before_script:
   - git clone https://github.com/flutter/flutter.git -b beta --depth 1
   - ./flutter/bin/flutter doctor
@@ -18,3 +35,13 @@ script:
 cache:
   directories:
     - $HOME/.pub-cache
+    # Android SDK
+    - $HOME/android-sdk-dl
+    - $HOME/android-sdk
+
+    # Gradle dependencies
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+    # Android build cache (see http://tools.android.com/tech-docs/build-cache)
+    - $HOME/.android/build-cache
