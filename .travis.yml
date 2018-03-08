@@ -21,7 +21,7 @@ install:
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'tools' > /dev/null
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platform-tools' > /dev/null
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'build-tools;27.0.3' > /dev/null
-  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;27' > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-27' > /dev/null
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
 
 env:
