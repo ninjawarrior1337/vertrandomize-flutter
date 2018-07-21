@@ -23,15 +23,16 @@ class _landingPage extends State<landingPage>
     if (tylerSwitch)
       return people.length;
     else
-      return people.length-1;
+      return people.length - 1;
   }
 
   int getRand()
   {
-    return new Random.secure().nextInt(getNextInt());
+    return Random().nextInt(getNextInt());
   }
 
   void _pressCode(){
+    people.clear();
     people.add("Darren");
     people.add("Jenna");
     people.add("Bryan");
@@ -41,12 +42,14 @@ class _landingPage extends State<landingPage>
     people.add("Johnny");
     people.add("Robert");
     people.add("Shiraz");
-    people.add("Aiden");
+    people.add("Aidan");
     people.add("Allen");
     people.add("Tyler");
 
     setState((){
-      finalVal = '${people[getRand()]}, ${people[getRand()]}';
+      int p1 = getRand();
+      int p2 = getRand();
+      finalVal = '${people[p1]}, ${people[p2]}';
       if (cbc == Colors.blue)
       {
         cbc = Colors.greenAccent;
@@ -71,10 +74,12 @@ class _landingPage extends State<landingPage>
                   value: tylerSwitch,
                   onChanged: (bool value) {
                     SystemSound.play(SystemSoundType.click);
-                    setState(() {
-                      tylerSwitch = value;
-                    }
+                    setState(()
+                      {
+                        tylerSwitch = value;
+                      }
                     );
+                    print(tylerSwitch);
                     },
                   title: new Text("Tyler Mode"),
               ),

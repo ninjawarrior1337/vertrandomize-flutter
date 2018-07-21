@@ -25,7 +25,7 @@ class _landingPage extends State<landingPage>
     if (tylerSwitch)
       return people.length;
     else
-      return people.length-1;
+      return people.length - 1;
   }
 
   int getRand()
@@ -34,8 +34,7 @@ class _landingPage extends State<landingPage>
   }
 
   void _pressCode() async {
-
-
+    people.clear();
     people.add("Derek");
     people.add("Jenna");
     people.add("Antonio");
